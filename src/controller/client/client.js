@@ -4,7 +4,7 @@ class ClientController{
 
     static getAllClients(){
         return ((req, resp) => {
-            ClientModels.getAllClients(req.params.userType)
+            ClientModels.getAllClients()
                 .then(rows => resp.send(rows))
                 .catch(err => {
                     console.log(err)

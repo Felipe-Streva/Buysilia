@@ -4,10 +4,10 @@ class ClientDAO{
         this._db = db
     }
 
-    getAllClientsInDB(userType){
+    getAllClientsInDB(){
         return new Promise((resolve, reject) => {
-            this._db.all(`Select * FROM ${userType}`, [], (err, rows) => {
-                if(err) reject(`Error: ${err}`)
+            this._db.all(`SELECT * FROM client`, [], (err, rows) => {
+                if(err) reject(`Error in the query: ${err}`)
                 resolve(rows)
             })
         })

@@ -6,10 +6,8 @@ const clientDAO = new ClientDAO(db)
 class ClientModels{
 
 
-    static getAllClients(userType){
-        if(userType == 'client') return clientDAO.getAllClientsInDB(userType)
-        if(userType == 'provider') return clientDAO.getAllClientsInDB(userType)
-        else return new Promise((resolve, reject) => reject('404 Not Found'))    
+    static getAllClients(){
+        return clientDAO.getAllClientsInDB()   
     }
 
 }
