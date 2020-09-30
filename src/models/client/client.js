@@ -10,6 +10,10 @@ class ClientModels{
         return clientDAO.getAllClientsInDB()   
     }
 
+    static deleteClient(id){
+        return clientDAO.deleteClientInDB(id)
+    }
+
 }
 
 module.exports = ClientModels
