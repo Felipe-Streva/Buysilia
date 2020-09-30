@@ -13,6 +13,15 @@ class ClientDAO{
         })
     }
 
+    getClientInDB(id){
+        return new Promise ((resolve, reject) => {
+            this._db.get(`SELECT * FROM client WHERE client_id = ?`, [id], (err,row) =>{
+                if(err) reject(`Error in SELECT Query ${err}`)
+                resolve(row)
+            })
+        })
+    }
+
     deleteClientInDB(id){
         return new Promise((resolve, reject) => {
             this._db.run(`DELETE FROM client WHERE client_id = ?`, [id], (err) => {

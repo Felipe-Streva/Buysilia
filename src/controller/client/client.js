@@ -14,6 +14,18 @@ class ClientController{
         })
     }
 
+    static getClient(){
+        return ((req, resp) => {
+            ClientModels.getClient(req.params.id)
+                .then(rows => resp.send(rows))
+                .catch(err => {
+                    console.log(err)
+                    resp.send(err)
+                }
+                )
+        })
+    }
+
     static deleteClient(){
         return ((req, resp) => {
             ClientModels.deleteClient(req.params.id)
