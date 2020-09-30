@@ -1,7 +1,3 @@
-#sqlite3 DB
-database/marketplace.db
-
-
 # Logs
 logs
 *.log
