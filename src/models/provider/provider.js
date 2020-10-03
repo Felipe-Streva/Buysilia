@@ -14,6 +14,10 @@ class ProviderModels{
         return providerDAO.getProviderInDB(id)
     }
 
+    static insertProvider(body) {
+        return providerDAO.insertProviderInDB(body)
+    }
+
     static deleteProvider(id){
         return providerDAO.deleteProviderInDB(id)
     }

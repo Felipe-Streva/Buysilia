@@ -1,7 +1,7 @@
 const { response } = require('express')
 const { restart } = require('nodemon')
 const { validationResult } = require('express-validator')
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 const ClientModels = require('../../models/client/client')
 
 class ClientController{
