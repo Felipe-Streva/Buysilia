@@ -8,10 +8,10 @@ const db = new sqlite3.Database('./database/marketplace.db')
     const statement = db.prepare("INSERT into Client (first_name, last_name, email, `password`, cpf, phone, adress) Values (?, ?, ?, ?, ?, ?, ?)");
     statement.run('Dudu', 'Oliveira', 'dudu@gmail.com', 'Jaspion', '123456789', '12345678911425', 'Queimados, ponte preta')
     statement.finalize()
-}) */
+}) 
 
 //Insert Provider
-/*db.serialize(()=>{
+db.serialize(()=>{
     const statement = db.prepare("INSERT into Provider (name, phone, company_name, cnpj, adress) Values (?, ?, ?, ?, ?)");
     statement.run('MAGALU', '2585258521', 'Magazine Luiza', '11111111111', 'Sao paulo, capital')
     statement.finalize()
