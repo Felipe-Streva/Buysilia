@@ -1,7 +1,5 @@
-const { OneClient } = require('../controller/client/client')
 const ClientController = require('../controller/client/client')
 
-const { Provider } = require('../controller/provider/provider')
 const ProviderController = require('../controller/provider/provider')
 
 
