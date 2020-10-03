@@ -15,7 +15,7 @@ describe('getAllClients test' , () => {
             .end((err, resp) => {
                 resp.should.have.status(200)
                 resp.body.should.be.a('array')
-                resp.body.should.be.eql([
+                resp.body[0].should.be.eql(
                     {
                       client_id: 1,
                       first_name: 'Dudu',
@@ -26,7 +26,7 @@ describe('getAllClients test' , () => {
                       phone: '12345678911425',
                       adress: 'Queimados, ponte preta'
                     }
-                  ])
+                  )
 
             done()
             })

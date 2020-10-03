@@ -1,8 +1,8 @@
-const { response } = require('express')
-const { restart } = require('nodemon')
 const { validationResult } = require('express-validator')
-const bcrypt = require('bcrypt');
-const ClientModels = require('../../models/client/client')
+
+const ClientModels = require('../../models/client/client');
+
+const generateHash = require('../../config/validator/hashGenerator')
 
 class ClientController{
 
@@ -32,30 +32,47 @@ class ClientController{
 
 
     static insertClient() {
-        return ((req, resp) => {
+        return (async (req, resp) => {
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
                 return resp.status(400).json({ errors: errors.array() })
             }
 
-            const saltRounds = 10;
-            const password = req.body.password;
+            req.body.password = await generateHash(req.body.password)
 
-            bcrypt.genSalt(saltRounds, (err, salt) => {
-                bcrypt.hash(password, salt,(err, hash) => {
-                    if(err) console.log(err)
-                    
-                    req.body.password = hash
-    
-                    return ClientModels.insertClient(req.body)
-                    .then(msg  => { 
-                        console.log(msg) 
-                        resp.redirect('/client')
-                    })
-                    .catch(err => { console.log(err) })
-                })
+            return ClientModels.insertClient(req.body)
+            .then(msg  => { 
+                console.log(msg) 
+                resp.redirect('/client')
+            })
+            .catch(err => {
+                console.log(err) 
+                resp.send(err)
             })
             
+            
+        })
+    }
+
+    static modifyClient(){
+        return (async (req, resp) => {
+            const errors = validationResult(req)
+            if (!errors.isEmpty()) {
+                return resp.status(400).json({ errors: errors.array() })
+            }
+
+            req.body.password = await generateHash(req.body.password)
+
+            return ClientModels.modifyClient(req.body, req.params.id)
+                        .then(msg  => { 
+                            console.log(msg) 
+                            resp.send(msg)
+                        })
+                        .catch(err => {
+                            console.log(err) 
+                            resp.send(err)
+                        })
+
         })
     }
 
