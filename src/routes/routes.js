@@ -1,4 +1,4 @@
-const { first_name, last_name, email, password, cpf } = require('../config/validator/validator')
+const { first_name, last_name, email, password, cpf, name, company_name, cnpj } = require('../config/validator/validator')
 
 const ClientController = require('../controller/client/client')
 
@@ -21,6 +21,8 @@ module.exports = (app) => {
     app.get(`/provider`, ProviderController.getAllProviders())
 
     app.get(`/provider/:id`, ProviderController.getProvider())
+
+    app.post(`/provider`, [name, company_name, cnpj], ProviderController.insertProvider())
 
     app.delete(`/provider/:id`, ProviderController.deleteProvider())
 

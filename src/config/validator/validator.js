@@ -5,5 +5,8 @@ module.exports = {
     last_name: body('last_name').isLength({ min: 2 }),
     email: body('email').isEmail(),
     password: body('password').isLength({ min: 6 }),
-    cpf: body('cpf').isLength({ min: 11, max: 11 }).isNumeric()
+    cpf: body('cpf').isLength({ min: 11, max: 11 }).isNumeric(),
+    cnpj:  body('cnpj').isLength({ min: 14, max: 14 }).isNumeric(),
+    name: body('name').isLength({ min: 2 }),
+    company_name: body('company_name').isLength({ min: 2 })
  } 

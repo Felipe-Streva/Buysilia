@@ -1,8 +1,8 @@
 const { validationResult } = require('express-validator')
-
-const ClientModels = require('../../models/client/client');
-
 const generateHash = require('../../config/validator/hashGenerator')
+
+const ClientModels = require('../../models/client/client')
+
 
 class ClientController{
 
