@@ -1,11 +1,9 @@
-const { body } = require('express-validator')
 const { first_name, last_name, email, password, cpf } = require('../config/validator/validator')
 
-const { OneClient } = require('../controller/client/client')
 const ClientController = require('../controller/client/client')
 
-const { Provider } = require('../controller/provider/provider')
 const ProviderController = require('../controller/provider/provider')
+
 
 
 module.exports = (app) => {

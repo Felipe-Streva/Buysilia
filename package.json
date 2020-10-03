@@ -4,7 +4,7 @@
   "description": "Marktplace from Resilia",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "nodemon ./src/server.js"
   },
   "repository": {
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "mocha": "^8.1.3",
     "nodemon": "^2.0.4"
   }
