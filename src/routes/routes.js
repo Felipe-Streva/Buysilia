@@ -14,6 +14,8 @@ module.exports = (app) => {
 
     app.post(`/client`, [first_name, last_name, email, password, cpf], ClientController.insertClient())
 
+    app.put(`/client/:id`, [first_name, last_name, email, password, cpf], ClientController.modifyClient())
+
     app.delete(`/client/:id`, ClientController.deleteClient())
 
     app.get(`/provider`, ProviderController.getAllProviders())
