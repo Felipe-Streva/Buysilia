@@ -14,6 +14,10 @@ class ClientModels{
         return clientDAO.getClientInDB(id)
     }
 
+    static insertClient(body) {
+        return clientDAO.insertClientInDB(body)
+    }
+
     static deleteClient(id){
         return clientDAO.deleteClientInDB(id)
     }

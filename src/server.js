@@ -5,4 +5,4 @@ const port = process.env.PORT || 3000;
 
 routes(app)
 
-app.listen(port, () => console.log('Server ON'))
+app.listen(port, () => console.log(`Server ON in http://localhost:${port}`))
