@@ -43,6 +43,25 @@ class ProviderController {
     };
   }
 
+  static modifyProvider() {
+    return (req, resp) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return resp.status(400).json({ errors: errors.array() });
+      }
+
+      return ProviderModels.modifyProvider(req.body, req.params.id)
+        .then((msg) => {
+          console.log(msg);
+          resp.send(msg);
+        })
+        .catch((err) => {
+          console.log(err);
+          resp.send(err);
+        });
+    };
+  }
+
   static deleteProvider() {
     return (req, resp) => {
       ProviderModels.deleteProvider(req.params.id)

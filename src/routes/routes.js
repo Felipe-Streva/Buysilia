@@ -24,6 +24,8 @@ module.exports = (app) => {
 
     app.post(`/provider`, [name, company_name, cnpj], ProviderController.insertProvider())
 
+    app.put(`/provider/:id`, [name, company_name, cnpj], ProviderController.modifyProvider())
+
     app.delete(`/provider/:id`, ProviderController.deleteProvider())
 
 }
