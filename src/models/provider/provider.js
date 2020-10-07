@@ -18,6 +18,10 @@ class ProviderModels{
         return providerDAO.insertProviderInDB(body)
     }
 
+    static modifyProvider(body, id) {
+        return providerDAO.modifyProviderInDB(body, id)
+    }
+
     static deleteProvider(id){
         return providerDAO.deleteProviderInDB(id)
     }
