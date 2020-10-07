@@ -1,5 +1,6 @@
 const ClientModels = require('../../models/client/client')
 
+
 class ClientController{
 
     static getAllClients(){

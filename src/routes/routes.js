@@ -1,7 +1,4 @@
-const { OneClient } = require('../controller/client/client')
 const ClientController = require('../controller/client/client')
-
-
 
 module.exports = (app) => {
 

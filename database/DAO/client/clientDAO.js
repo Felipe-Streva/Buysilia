@@ -22,6 +22,36 @@ class ClientDAO{
         })
     }
 
+    insertClientInDB(body) {
+        return new Promise( (resolve, reject) => {
+            const INSERT = `
+                INSERT INTO client (
+                    first_name, last_name, email, password, cpf, phone, adress
+                ) VALUES (?, ?, ?, ?, ?, ?, ?);
+            `;
+            const params = [body.first_name, body.last_name, body.email, body.password, body.cpf, body.phone, body.adress]; 
+            this._db.run(INSERT, params, (err) => {
+                if(err) reject(`Error in INSERT Query: ${err}`)
+                resolve(`Client inserted`)
+            })
+        })
+    }
+
+    modifyClientInDB(body, id) {
+        return new Promise( (resolve, reject) => {
+            const UPDATE = `
+                UPDATE client SET
+                    first_name = ?, last_name = ?, email = ?, password = ?, cpf = ?, phone = ?, adress = ?
+                WHERE client_id = ?;
+            `;
+            const params = [body.first_name, body.last_name, body.email, body.password, body.cpf, body.phone, body.adress, id]; 
+            this._db.run(UPDATE, params, (err) => {
+                if(err) reject(`Error in UPDATE Query: ${err}`)
+                resolve(`Client modified`)
+            })
+        })
+    }
+
     deleteClientInDB(id){
         return new Promise((resolve, reject) => {
             this._db.run(`DELETE FROM client WHERE client_id = ?`, [id], (err) => {
