@@ -37,6 +37,21 @@ class ProviderDAO{
         })
     }
 
+    modifyProviderInDB(body, id) {
+        return new Promise( (resolve, reject) => {
+            const UPDATE = `
+                UPDATE provider SET
+                    name = ?, phone = ?, company_name = ?, cnpj = ?, adress = ?
+                WHERE provider_id = ?;
+            `;
+            const params = [body.name, body.phone, body.company_name, body.cnpj, body.adress, id]; 
+            this._db.run(UPDATE, params, (err) => {
+                if(err) reject(`Error in UPDATE Query: ${err}`)
+                resolve(`Provider modified`)
+            })
+        })
+    }
+
     deleteProviderInDB(id){
         return new Promise((resolve, reject) => {
             this._db.run(`DELETE FROM client WHERE provider_id = ?`, [id], (err) => {
