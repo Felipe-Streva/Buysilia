@@ -26,10 +26,10 @@ class ProviderDAO{
         return new Promise( (resolve, reject) => {
             const INSERT = `
                 INSERT INTO provider (
-                    name, phone, company_name, cnpj, adress
+                    name, phone, company_name, cnpj, address
                 ) VALUES (?, ?, ?, ?, ?);
             `;
-            const params = [body.name, body.phone, body.company_name, body.cnpj, body.adress]; 
+            const params = [body.name, body.phone, body.company_name, body.cnpj, body.address]; 
             this._db.run(INSERT, params, (err) => {
                 if(err) reject(`Error in INSERT Query: ${err}`)
                 resolve(`Provider inserted`)
@@ -41,10 +41,10 @@ class ProviderDAO{
         return new Promise( (resolve, reject) => {
             const UPDATE = `
                 UPDATE provider SET
-                    name = ?, phone = ?, company_name = ?, cnpj = ?, adress = ?
+                    name = ?, phone = ?, company_name = ?, cnpj = ?, address = ?
                 WHERE provider_id = ?;
             `;
-            const params = [body.name, body.phone, body.company_name, body.cnpj, body.adress, id]; 
+            const params = [body.name, body.phone, body.company_name, body.cnpj, body.address, id]; 
             this._db.run(UPDATE, params, (err) => {
                 if(err) reject(`Error in UPDATE Query: ${err}`)
                 resolve(`Provider modified`)

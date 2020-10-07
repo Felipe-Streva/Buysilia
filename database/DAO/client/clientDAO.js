@@ -26,10 +26,10 @@ class ClientDAO{
         return new Promise( (resolve, reject) => {
             const INSERT = `
                 INSERT INTO client (
-                    first_name, last_name, email, password, cpf, phone, adress
+                    first_name, last_name, email, password, cpf, phone, address
                 ) VALUES (?, ?, ?, ?, ?, ?, ?);
             `;
-            const params = [body.first_name, body.last_name, body.email, body.password, body.cpf, body.phone, body.adress]; 
+            const params = [body.first_name, body.last_name, body.email, body.password, body.cpf, body.phone, body.address]; 
             this._db.run(INSERT, params, (err) => {
                 if(err) reject(`Error in INSERT Query: ${err}`)
                 resolve(`Client inserted`)
@@ -41,10 +41,10 @@ class ClientDAO{
         return new Promise( (resolve, reject) => {
             const UPDATE = `
                 UPDATE client SET
-                    first_name = ?, last_name = ?, email = ?, password = ?, cpf = ?, phone = ?, adress = ?
+                    first_name = ?, last_name = ?, email = ?, password = ?, cpf = ?, phone = ?, address = ?
                 WHERE client_id = ?;
             `;
-            const params = [body.first_name, body.last_name, body.email, body.password, body.cpf, body.phone, body.adress, id]; 
+            const params = [body.first_name, body.last_name, body.email, body.password, body.cpf, body.phone, body.address, id]; 
             this._db.run(UPDATE, params, (err) => {
                 if(err) reject(`Error in UPDATE Query: ${err}`)
                 resolve(`Client modified`)
