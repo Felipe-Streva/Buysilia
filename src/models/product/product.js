@@ -6,16 +6,20 @@ const productDAO = new ProductDAO(db)
 class ProductModels{
 
 
-    static getAllProductsInDB(){
+    static getAllProducts(){
         return productDAO.getAllProductsInDB()   
     }
 
-    static getAllProductOneProviderInDB(id){
-        return productDAO.getAllProductOneProviderInDB(id)   
+    static getAllProductsByProvider(id){
+        return productDAO.getAllProductsByProviderInDB(id)   
     }
 
-    static getProductOneProviderInDB(id){
-        return productDAO.getProductOneProviderInDB(id)   
+    static getProduct(id){
+        return productDAO.getProductInDB(id)   
+    }
+
+    static insertProduct(body){
+        return productDAO.insertProductInDB(body)
     }
 
 }

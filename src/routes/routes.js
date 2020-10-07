@@ -1,5 +1,5 @@
 
-const { first_name, last_name, email, password, cpf, name, company_name, cnpj } = require('../config/validator/validator')
+const { first_name, last_name, email, password, cpf, name, company_name, cnpj, provider_id, evaluation, stock, price } = require('../config/validator/validator')
 
 const ClientController = require('../controller/client/client')
 
@@ -30,9 +30,10 @@ module.exports = (app) => {
 
     app.get(`/product`, ProductController.getAllProducts())
 
-    app.get('/product/product/provider/:id', ProductController.getAllProductOneProviderInDB());
+    app.get('/product/provider/:providerId', ProductController.getAllProductsByProvider());
   
-    app.get('/product/product/provider/:id', ProductController.getProductOneProviderInDB());
+    app.get('/product/:id', ProductController.getProduct());
 
+    app.post(`/product`, [provider_id, evaluation, stock, price, name], ProductController.insertProduct())
 
 }
