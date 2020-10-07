@@ -10,6 +10,4 @@ routes(app)
 app.listen(port, () => console.log(`Server ON in http://localhost:${port}`))
 
 
-
 module.exports = app
-

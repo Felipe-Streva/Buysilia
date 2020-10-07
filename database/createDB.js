@@ -1,3 +1,4 @@
+
 const sqlite3 = require('sqlite3').verbose()
 const db = new sqlite3.Database('database/marketplace.db')
 
@@ -7,3 +8,5 @@ const db = new sqlite3.Database('database/marketplace.db')
     db.run("CREATE TABLE if not exists `Provider` (provider_id integer primary key autoincrement, name varchar(255), phone varchar(14), company_name varchar(255), cnpj varchar(11), adress varchar(255)  )");
     db.run("CREATE TABLE if not exists `Purchase` (purchase_id integer primary key autoincrement, client_id integer, product_id integer, date date)");
 })*/
+
+

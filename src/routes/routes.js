@@ -1,9 +1,11 @@
+
 const { first_name, last_name, email, password, cpf, name, company_name, cnpj } = require('../config/validator/validator')
 
 const ClientController = require('../controller/client/client')
 
 const ProviderController = require('../controller/provider/provider')
 
+const ProductController = require('../controller/product/product')
 
 
 module.exports = (app) => {
@@ -25,5 +27,12 @@ module.exports = (app) => {
     app.post(`/provider`, [name, company_name, cnpj], ProviderController.insertProvider())
 
     app.delete(`/provider/:id`, ProviderController.deleteProvider())
+
+    app.get(`/product`, ProductController.getAllProducts())
+
+    app.get('/product/product/provider/:id', ProductController.getAllProductOneProviderInDB());
+  
+    app.get('/product/product/provider/:id', ProductController.getProductOneProviderInDB());
+
 
 }
