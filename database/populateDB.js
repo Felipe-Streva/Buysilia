@@ -19,8 +19,8 @@ db.serialize(()=>{
 
 
 //Insert Product
-// db.serialize(()=>{
-//     const statement = db.prepare("INSERT into Product (provider_id , name , evaluation, description , price , stock ) Values (?, ?, ?, ?, ?, ?)");
-//     statement.run(1, 'Nokia3000', 'Mediano', 'Tijolao', 150.99, 50)
-//     statement.finalize()
-// }) 
+/*db.serialize(()=>{
+    const statement = db.prepare("INSERT into Product (provider_id , name , evaluation, description , price , stock ) Values (?, ?, ?, ?, ?, ?)");
+    statement.run(1, 'Nokia3000', 'Mediano', 'Tijolao', 150.99, 50)
+    statement.finalize()
+}) */
