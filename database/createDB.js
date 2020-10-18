@@ -1,4 +1,5 @@
-// deletar o banco e rodar este arquivo antes de subir para o github
+// deletar o banco antes de subir para o git
+// rodar o banco antes de trabalhar
 
 const sqlite3 = require('sqlite3').verbose()
 const db = new sqlite3.Database('database/marketplace.db')
