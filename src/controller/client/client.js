@@ -78,7 +78,6 @@ class ClientController{
 
     static deleteClient(){
         return ((req, resp) => {
-            User.
             ClientModels.deleteClient(req.params.id)
                 .then( msg => {
                     console.log(msg)
