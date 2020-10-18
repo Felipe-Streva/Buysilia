@@ -1,5 +1,5 @@
 
-const { first_name, last_name, email, password, cpf, name, company_name, cnpj, provider_id, evaluation, stock, price } = require('../config/validator/validator')
+const { first_name, last_name, email, password, cpf, name, company_name, cnpj, provider_id, evaluation, stock, price, id } = require('../config/validator/validator')
 
 const ClientController = require('../controller/client/client')
 
