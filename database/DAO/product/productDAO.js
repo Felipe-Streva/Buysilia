@@ -42,6 +42,21 @@ class ProductDAO{
         })
 
     }
+
+    modifyProductInDB(body, id) {
+        return new Promise( (resolve, reject) => {
+            const UPDATE = `
+                UPDATE product SET
+                    provider_id = ?, name = ?, evaluation = ?, description = ?, price = ?, stock = ?
+                WHERE product_id = ?;
+            `;
+            const params = [body.provider_id, body.name, body.evaluation, body.description, body.price, body.stock, id]; 
+            this._db.run(UPDATE, params, (err) => {
+                if(err) reject(`Error in UPDATE Query: ${err}`)
+                resolve(`Product modified`)
+            })
+        })
+    }
     
 }
 

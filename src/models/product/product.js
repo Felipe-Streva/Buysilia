@@ -22,6 +22,10 @@ class ProductModels{
         return productDAO.insertProductInDB(body)
     }
 
+    static modifyProduct(body, id) {
+        return productDAO.modifyProductInDB(body, id)
+    }
+
 }
 
 module.exports = ProductModels

@@ -38,4 +38,6 @@ module.exports = (app) => {
 
     app.post(`/product`, [provider_id, evaluation, stock, price, name], ProductController.insertProduct())
 
+    app.put(`/product/:id`, [provider_id, evaluation, stock, price, name], ProductController.modifyProduct())
+
 }
