@@ -54,7 +54,7 @@ class ProviderDAO{
 
     deleteProviderInDB(id){
         return new Promise((resolve, reject) => {
-            this._db.run(`DELETE FROM client WHERE provider_id = ?`, [id], (err) => {
+            this._db.run(`DELETE FROM provider WHERE provider_id = ?`, [id], (err) => {
                 if(err) reject(`Error in DELETE Query: ${err}`)
                 resolve(`Provider deleted`)
             })
