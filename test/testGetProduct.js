@@ -23,26 +23,7 @@ describe("getAllProduct test", () => {
             description: "Tijolao",
             price: 150.99,
             stock: 50,
-          },
-          {
-            product_id: 2,
-            provider_id: 3,
-            name: "Fogão Brastemp",
-            evaluation: 9,
-            description: "Fogão Brastemp",
-            price: 999.99,
-            stock: 10,
-          },
-          {
-            product_id: 3,
-            provider_id: 1,
-            name: "Fogão Brastemp",
-            evaluation: 9,
-            description: "Fogão Brastemp",
-            price: 799.99,
-            stock: 20,
-          }
-        );
+          });
 
         done();
       });
@@ -56,7 +37,7 @@ describe("getProduct test", () => {
       .get("/product/1")
       .end((err, resp) => {
         resp.should.have.status(200);
-        resp.body[0].should.be.eql({
+        resp.body.should.be.eql({
           product_id: 1,
             provider_id: 4,
             name: "Nokia3000",
@@ -76,7 +57,7 @@ describe("getProduct test", () => {
       .get("/product/2")
       .end((err, resp) => {
         resp.should.have.status(200);
-        resp.body[0].should.be.eql({
+        resp.body.should.be.eql({
           product_id: 2,
             provider_id: 3,
             name: "Fogão Brastemp",
@@ -96,7 +77,7 @@ describe("getProduct test", () => {
       .get("/product/3")
       .end((err, resp) => {
         resp.should.have.status(200);
-        resp.body[0].should.be.eql({
+        resp.body.should.be.eql({
           product_id: 3,
             provider_id: 1,
             name: "Fogão Brastemp",

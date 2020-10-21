@@ -24,7 +24,7 @@ class ProductDAO{
 
     getProductInDB(id) {
         return new Promise ((resolve, reject) => {
-            this._db.all(`SELECT * FROM product WHERE product_id=?`, [id], (err,row) =>{
+            this._db.get(`SELECT * FROM product WHERE product_id=?`, [id], (err,row) =>{
                 if(err) reject(`Error in SELECT Query ${err}`)
                 resolve(row)
             })
