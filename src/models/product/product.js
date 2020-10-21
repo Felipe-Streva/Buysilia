@@ -26,6 +26,10 @@ class ProductModels{
         return productDAO.modifyProductInDB(body, id)
     }
 
+    static deleteProduct(id){
+        return productDAO.deleteProductInDB(id)
+    }
+
 }
 
 module.exports = ProductModels

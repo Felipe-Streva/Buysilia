@@ -76,7 +76,21 @@ class ProductController{
               resp.send(err);
             });
         };
-      }
+    }
+
+    static deleteProduct(){
+        return ((req, resp) => {
+            ProductModels.deleteProduct(req.params.id)
+                .then( msg => {
+                    console.log(msg)
+                    resp.send(msg)
+                })
+                .catch(err => {
+                    console.log(err)
+                    resp.send(err)
+                })
+        })
+    }
 }
 
 module.exports = ProductController

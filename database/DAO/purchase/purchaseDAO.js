@@ -30,6 +30,15 @@ class PurchaseDAO{
             })
         })
     }
+
+    deletePurchaseInDB(id){
+        return new Promise((resolve, reject) => {
+            this._db.run(`DELETE FROM Purchase WHERE purchase_id = ?`, [id], (err) => {
+                if(err) reject(`Error in DELETE Query: ${err}`)
+                resolve(`Purchase deleted`)
+            })
+        })
+    }
 }
 
 module.exports = PurchaseDAO

@@ -43,6 +43,20 @@ class PurchaseController{
         }
 
     }
+
+    static deletePurchase(){
+        return ((req, resp) => {
+            PurchaseModels.deletePurchase(req.params.id)
+                .then( msg => {
+                    console.log(msg)
+                    resp.send(msg)
+                })
+                .catch(err => {
+                    console.log(err)
+                    resp.send(err)
+                })
+        })
+    }
 }
 
 module.exports = PurchaseController

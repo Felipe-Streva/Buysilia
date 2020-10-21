@@ -17,6 +17,10 @@ class PurchaseModels{
         return purchaseDAO.getAllPurchasesByProductInDB(id)
     }
 
+    static deletePurchase(id){
+        return purchaseDAO.deletePurchaseInDB(id)
+    }
+
 }
 
 module.exports = PurchaseModels

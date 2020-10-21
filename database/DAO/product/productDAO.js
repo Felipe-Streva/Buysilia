@@ -57,6 +57,15 @@ class ProductDAO{
             })
         })
     }
+
+    deleteProductInDB(id){
+        return new Promise((resolve, reject) => {
+            this._db.run(`DELETE FROM Product WHERE product_id = ?`, [id], (err) => {
+                if(err) reject(`Error in DELETE Query: ${err}`)
+                resolve(`Product deleted`)
+            })
+        })
+    }
     
 }
 

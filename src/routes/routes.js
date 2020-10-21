@@ -47,6 +47,8 @@ module.exports = (app) => {
 
     app.put(`/product/:id`, [provider_id, evaluation, stock, price, name], ProductController.modifyProduct())
 
+    app.delete(`/product/:id`, ProductController.deleteProduct())
+
 
     //Purchase
     app.get(`/purchase`, PurchaseController.getAllPurchases())
@@ -54,5 +56,7 @@ module.exports = (app) => {
     app.get(`/purchase/client/:clientId`, PurchaseController.getAllPurchasesByClient())
 
     app.get(`/purchase/product/:productId`, PurchaseController.getAllPurchasesByProduct())
+
+    app.delete(`/purchase/:id`, PurchaseController.deletePurchase())
 
 }
