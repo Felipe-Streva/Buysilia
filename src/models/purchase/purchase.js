@@ -17,6 +17,10 @@ class PurchaseModels{
         return purchaseDAO.getAllPurchasesByProductInDB(id)
     }
 
+    static insertPurchase(body) {
+        return purchaseDAO.insertPurchaseInDB(body)
+    }
+
     static deletePurchase(id){
         return purchaseDAO.deletePurchaseInDB(id)
     }

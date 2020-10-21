@@ -13,5 +13,6 @@ module.exports = {
     evaluation: body('evaluation').isNumeric(),
     stock: body('stock').isNumeric(),
     price: body('price').isNumeric(),
-    id: body('id').isNumeric()
+    client_id: body('client_id').isNumeric(),
+    product_id: body('product_id').isNumeric()
  } 

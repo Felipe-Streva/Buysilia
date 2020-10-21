@@ -4,10 +4,10 @@
 const sqlite3 = require('sqlite3').verbose()
 const db = new sqlite3.Database('database/marketplace.db')
 
-/*const getDateNow = new Date(Date.now())
+const getDateNow = new Date(Date.now())
 const convertTimeZoneSaoPaulo = new Date(getDateNow.valueOf() - getDateNow.getTimezoneOffset() * 60000)
 const transformDateToSQLITE = convertTimeZoneSaoPaulo.toISOString().replace("T", " ").replace("Z","")
-const dateSqlite = transformDateToSQLITE.substring(0, transformDateToSQLITE.indexOf('.'))*/
+const dateSqlite = transformDateToSQLITE.substring(0, transformDateToSQLITE.indexOf('.'))
 
 
 db.serialize(()=>{
@@ -144,88 +144,77 @@ db.serialize(()=>{
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(1,1,'17/10/2020')
+        statement.run(1, 1, dateSqlite);
         statement.finalize()
         
     })
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(8,2,'17/10/2020')
+        statement.run(8, 2, dateSqlite);
         statement.finalize()
         
     })
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(8,4,'17/10/2020')
+        statement.run(8, 4, dateSqlite);
         statement.finalize()
         
     })
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(4,2,'17/10/2020')
+        statement.run(4, 2, dateSqlite);
         statement.finalize()
         
     })
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(4,1,'17/10/2020')
+        statement.run(4, 1, dateSqlite);
         statement.finalize()
         
     })
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(1,4,'17/10/2020')
+        statement.run(1, 4, dateSqlite);
         statement.finalize()
         
     })
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(2,3,'17/10/2020')
+        statement.run(2, 3, dateSqlite);
         statement.finalize()
         
     })
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(3,1,'17/10/2020')
+        statement.run(3, 1, dateSqlite);
         statement.finalize()
         
     })
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(2,3,'17/10/2020')
+        statement.run(2, 3, dateSqlite);
         statement.finalize()
         
     })
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(9,3,'17/10/2020')
+        statement.run(9, 3, dateSqlite);
         statement.finalize()
         
     })
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
-        //statement.run(1, 1, dateSqlite);
-        statement.run(6,1,'17/10/2020')
+        statement.run(6, 1, dateSqlite);
         statement.finalize()
         
     })
