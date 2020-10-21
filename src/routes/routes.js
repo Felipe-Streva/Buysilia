@@ -1,5 +1,5 @@
 
-const { first_name, last_name, email, password, cpf, name, company_name, cnpj, provider_id, evaluation, stock, price, id } = require('../config/validator/validator')
+const { first_name, last_name, email, password, cpf, name, company_name, cnpj, provider_id, evaluation, stock, price, client_id, product_id } = require('../config/validator/validator')
 
 const ClientController = require('../controller/client/client')
 
@@ -56,6 +56,8 @@ module.exports = (app) => {
     app.get(`/purchase/client/:clientId`, PurchaseController.getAllPurchasesByClient())
 
     app.get(`/purchase/product/:productId`, PurchaseController.getAllPurchasesByProduct())
+
+    app.post(`/purchase`, [client_id, product_id ], PurchaseController.insertPurchase())
 
     app.delete(`/purchase/:id`, PurchaseController.deletePurchase())
 

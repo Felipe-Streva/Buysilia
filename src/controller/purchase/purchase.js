@@ -44,6 +44,27 @@ class PurchaseController{
 
     }
 
+    static insertPurchase() {
+        return (async (req, resp) => {
+            const errors = validationResult(req)
+            if (!errors.isEmpty()) {
+                return resp.status(400).json({ errors: errors.array() })
+            }
+
+            return PurchaseModels.insertPurchase(req.body)
+            .then(msg  => { 
+                console.log(msg) 
+                resp.redirect('/purchase')
+            })
+            .catch(err => {
+                console.log(err) 
+                resp.send(err)
+            })
+            
+            
+        })
+    }
+
     static deletePurchase(){
         return ((req, resp) => {
             PurchaseModels.deletePurchase(req.params.id)
