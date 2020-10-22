@@ -33,7 +33,7 @@ Substitua `:clientId` pelo identificador do cliente.
 
 - Caso queira consultar todas as compras de um produto específico use a rota no método `GET`:
 `http://localhost:3000/purchase/product/:productId`.
-Substitua `:clientId` pelo identificador do cliente.
+Substitua `:productId` pelo identificador do produto.
 ---
 
 ### Método POST
