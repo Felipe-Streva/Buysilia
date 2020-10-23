@@ -1,6 +1,5 @@
 const ProviderModels = require("../../models/provider/provider");
 const { validationResult } = require("express-validator");
-const bcrypt = require("bcrypt");
 
 class ProviderController {
   static getAllProviders() {
@@ -9,7 +8,7 @@ class ProviderController {
         .then((rows) => resp.send(rows))
         .catch((err) => {
           console.log(err);
-          resp.send(err);
+          resp.send({ error: err });
         });
     };
   }
@@ -20,7 +19,7 @@ class ProviderController {
         .then((rows) => resp.send(rows))
         .catch((err) => {
           console.log(err);
-          resp.send(err);
+          resp.send({ error: err });
         });
     };
   }
@@ -39,6 +38,7 @@ class ProviderController {
         })
         .catch((err) => {
           console.log(err);
+          resp.send({ error: err })
         });
     };
   }
@@ -53,11 +53,11 @@ class ProviderController {
       return ProviderModels.modifyProvider(req.body, req.params.id)
         .then((msg) => {
           console.log(msg);
-          resp.send(msg);
+          resp.send({ message: msg });
         })
         .catch((err) => {
           console.log(err);
-          resp.send(err);
+          resp.send({ error: err });
         });
     };
   }
@@ -67,11 +67,11 @@ class ProviderController {
       ProviderModels.deleteProvider(req.params.id)
         .then((msg) => {
           console.log(msg);
-          resp.send(`${msg}`);
+          resp.send({ message: msg });
         })
         .catch((err) => {
           console.log(err);
-          resp.send(err);
+          resp.send({ error: err });
         });
     };
   }

@@ -70,7 +70,7 @@ class ClientController{
                         })
                         .catch(err => {
                             console.log(err) 
-                            resp.send(err)
+                            resp.send({ error: err })
                         })
 
         })
@@ -81,11 +81,11 @@ class ClientController{
             ClientModels.deleteClient(req.params.id)
                 .then( msg => {
                     console.log(msg)
-                    resp.send(`${msg}`)
+                    resp.send({ message: msg })
                 })
                 .catch(err => {
                     console.log(err)
-                    resp.send(err)
+                    resp.send({ error: err })
                 })
         })
     }

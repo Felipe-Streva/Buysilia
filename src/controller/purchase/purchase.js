@@ -13,7 +13,7 @@ class PurchaseController{
                 .then(rows => resp.send(rows))
                 .catch(err => {
                     console.log(err)
-                    resp.send(err)
+                    resp.send({ error: err })
                 })
             
         }
@@ -26,7 +26,7 @@ class PurchaseController{
                 .then(rows => resp.send(rows))
                 .catch(err => {
                     console.log(err)
-                    resp.send(err)
+                    resp.send({ error: err })
                 })
             
         }
@@ -39,7 +39,7 @@ class PurchaseController{
                 .then(rows => resp.send(rows))
                 .catch(err => {
                     console.log(err)
-                    resp.send(err)
+                    resp.send({ error: err })
                 })
             
         }
@@ -67,7 +67,7 @@ class PurchaseController{
                         })
                         .catch(err => {
                             console.log(err) 
-                            resp.send(err)
+                            resp.send({ error: err })
             })
 
             }
@@ -83,11 +83,11 @@ class PurchaseController{
             PurchaseModels.deletePurchase(req.params.id)
                 .then( msg => {
                     console.log(msg)
-                    resp.send(msg)
+                    resp.send({ message: msg })
                 })
                 .catch(err => {
                     console.log(err)
-                    resp.send(err)
+                    resp.send({ error: err })
                 })
         })
     }
