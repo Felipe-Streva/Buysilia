@@ -49,17 +49,8 @@ describe("/POST client", () => {
       .end((err, resp) => {
         resp.should.have.status(200);
         resp.body.should.be.a("array");
-        resp.body[11].should.be.eql(
-          {
-            "client_id": 12,
-            "first_name": "Vic",
-            "last_name": "Marques",
-            "email": "vic@gmail.com",
-            "password": "$2b$10$O/xT6JKlVel12hkVuwp5i.fWvzUgLqHV59EhN2knEVfsC3e8JsGp2",
-            "cpf": "12345624568",
-            "phone": "12345678911425",
-            "address": "Rocinha"
-          });
+        resp.body[10].client_id.should.be.eql(11);
+        resp.body[10].first_name.should.be.eql("Vic");
         done();
     });
   })

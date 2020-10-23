@@ -66,7 +66,7 @@ class ClientController{
             return ClientModels.modifyClient(req.body, req.params.id)
                         .then(msg  => { 
                             console.log(msg) 
-                            resp.send(msg)
+                            resp.send({ message: msg })
                         })
                         .catch(err => {
                             console.log(err) 
