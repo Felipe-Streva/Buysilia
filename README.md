@@ -116,6 +116,10 @@ O retorno será um array de objetos com as informações *produto*.
 	message: "$table deleted"
 }
 ```
+---
+## Deploy
+Para hospedar gratuitamente nossa aplicação, utilizamos o Heroku. A API pode ser acessada através do link: https://stark-hamlet-20271.herokuapp.com/ + rota desejada.
+
 
 ## Ferramentas utilizadas
 - express
