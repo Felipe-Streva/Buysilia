@@ -2,6 +2,8 @@ const { validationResult } = require('express-validator')
 
 const PurchaseModels = require('../../models/purchase/purchase')
 
+const ProductModels = require('../../models/product/product')
+
 
 class PurchaseController{
 
@@ -51,15 +53,26 @@ class PurchaseController{
                 return resp.status(400).json({ errors: errors.array() })
             }
 
-            return PurchaseModels.insertPurchase(req.body)
-            .then(msg  => { 
-                console.log(msg) 
-                resp.redirect('/purchase')
+            const {stock} = await ProductModels.getProduct(req.body.product_id)
+                                    .then((row) => row)
+                                    .catch((err) => resp.send(err))
+            
+            if(stock==0) return resp.send('Sem stock')
+            if(stock>0){
+
+                return PurchaseModels.insertPurchase(req.body, stock)
+                        .then(msg  => { 
+                            console.log(msg) 
+                            resp.redirect('/purchase')
+                        })
+                        .catch(err => {
+                            console.log(err) 
+                            resp.send(err)
             })
-            .catch(err => {
-                console.log(err) 
-                resp.send(err)
-            })
+
+            }
+
+            
             
             
         })
