@@ -16,24 +16,29 @@ Nosso projeto foi feito usando API REST com 4 verbos HTTP `GET, POST, PUT e DELE
 `http://localhost:3000/provider/:id` ou
 `http://localhost:3000/product/:id`.
 Substitua o `:id` pelos identificadores do *cliente*, *fornecedor* ou *produto*.
+O retorno será um json com as informações do *cliente*, *fornecedor* ou *produto*.
 
 - Caso queira consultar todos os *clientes*, *fornecedores*, *produtos* ou *compras* use as rotas no método `GET`, uma por vez:
  `http://localhost:3000/client`,
  `http://localhost:3000/provider/`,
  `http://localhost:3000/product/` ou
  `http://localhost:3000/purchase/`.
+ O retorno será um array de objetos com as informações do *cliente*, *fornecedor* ou *produto*.
 
 - Caso queira consultar todos os produtos de um determinado fornecedor use a rota no método `GET`:
 `http://localhost:3000/product/provider/:providerId`.
 Substitua `:providerId` pelo identificador do fornecedor.
+O retorno será um array de objetos com as informações *fornecedor*.
 
 - Caso queira consultar todas as compras de um cliente específico use a rota no método `GET`:
 `http://localhost:3000/purchase/client/:clientId`.
 Substitua `:clientId` pelo identificador do cliente.
+O retorno será um array de objetos com as informações *cliente*.
 
 - Caso queira consultar todas as compras de um produto específico use a rota no método `GET`:
 `http://localhost:3000/purchase/product/:productId`.
 Substitua `:productId` pelo identificador do produto.
+O retorno será um array de objetos com as informações *produto*.
 ---
 
 ### Método POST
@@ -79,10 +84,10 @@ Substitua `:productId` pelo identificador do produto.
 ```json
 {
 	client_id: 2,
-	product_id: 1,
-	date: "22/10/2020"
+	product_id: 1
 }
 ```
+- Todos os métodos POST retornam as consultas dos *clientes*, *fornecedores*, *produtos* ou *compras*.
 ---
 ### Método PUT
 - Para atualizar um **cliente**, você terá que usar a rota `http://localhost:3000/client/:id` no método `PUT`, substituindo o `:id` pelo identificador do cliente,  com a mesma estrutura de dados do **método POST**.
@@ -90,6 +95,12 @@ Substitua `:productId` pelo identificador do produto.
 - Para atualizar um **fornecedor**, você terá que usar a rota `http://localhost:3000/provider/:id` no método `PUT`, substituindo o `:id` pelo identificador do fornecedor,  com a mesma estrutura de dados do **método POST**.
 
 - Para atualizar um **produto**, você terá que usar a rota `http://localhost:3000/product/:id` no método `PUT`, substituindo o `:id` pelo identificador do produto,  com a mesma estrutura de dados do **método POST**.
+- Todos os métodos PUT deverá retonar um JSON 
+```json
+{
+	message: "$table modified"
+}
+```
 ---
 ### Método DELETE
 - Para deletar um **cliente**, você terá que usar a rota `http://localhost:3000/client/:id` no método `DELETE`, substituindo o `:id` pelo identificador do cliente.
@@ -99,6 +110,12 @@ Substitua `:productId` pelo identificador do produto.
 - Para deletar um **produto**, você terá que usar a rota `http://localhost:3000/product/:id` no método `DELETE`, substituindo o `:id` pelo identificador do produto.
  
 - Para deletar uma **compra**, você terá que usar a rota `http://localhost:3000/purchase/:id` no método `DELETE`, substituindo o `:id` pelo identificador da compra.
+- Todos os métodos DELETE deverá retonar um JSON 
+```json
+{
+	message: "$table deleted"
+}
+```
 
 ## Ferramentas utilizadas
 - express
