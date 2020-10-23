@@ -17,8 +17,9 @@ class PurchaseModels{
         return purchaseDAO.getAllPurchasesByProductInDB(id)
     }
 
-    static insertPurchase(body) {
-        return purchaseDAO.insertPurchaseInDB(body)
+    static insertPurchase(body, stock) {
+        stock--
+        return purchaseDAO.insertPurchaseInDB(body, stock)
     }
 
     static deletePurchase(id){

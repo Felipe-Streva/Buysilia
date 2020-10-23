@@ -31,20 +31,30 @@ class PurchaseDAO{
         })
     }
 
-    insertPurchaseInDB(body) {
+    insertPurchaseInDB(body, stock) {
         return new Promise( (resolve, reject) => {
             const getDateNow = new Date(Date.now())
             const convertTimeZoneSaoPaulo = new Date(getDateNow.valueOf() - getDateNow.getTimezoneOffset() * 60000)
             const transformDateToSQLITE = convertTimeZoneSaoPaulo.toISOString().replace("T", " ").replace("Z","")
             const dateSqlite = transformDateToSQLITE.substring(0, transformDateToSQLITE.indexOf('.'))
+
+
             
-            const INSERT = `
-                INSERT INTO Purchase (
-                    client_id, product_id, date
-                ) VALUES (?, ?, ?);
+            const Query = `BEGIN TRANSACTION;
+                                INSERT INTO Purchase (
+                                    client_id, product_id, date
+                                ) VALUES (${body.client_id}, ${body.product_id},'${dateSqlite}');
+
+                                UPDATE Product SET
+                                    stock = ${stock}
+                                WHERE 
+                                    product_id = ${body.product_id};
+
+                                COMMIT;
+
             `;
-            const params = [body.client_id, body.product_id, dateSqlite]; 
-            this._db.run(INSERT, params, (err) => {
+
+            this._db.exec(Query, (err) => {
                 if(err) reject(`Error in INSERT Query: ${err}`)
                 resolve(`Purchase inserted`)
             })
