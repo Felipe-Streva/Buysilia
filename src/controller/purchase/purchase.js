@@ -57,7 +57,7 @@ class PurchaseController{
                                     .then((row) => row)
                                     .catch((err) => resp.send(err))
             
-            if(stock==0) return resp.send('Sem stock')
+            if(stock==0) return resp.send({error : "No product in Stock"})
             if(stock>0){
 
                 return PurchaseModels.insertPurchase(req.body, stock)
