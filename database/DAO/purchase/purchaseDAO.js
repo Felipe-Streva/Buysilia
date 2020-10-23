@@ -61,13 +61,32 @@ class PurchaseDAO{
         })
     }
 
-    deletePurchaseInDB(id){
+    deletePurchaseInDB(id, stock, product_id){
         return new Promise((resolve, reject) => {
-            this._db.run(`DELETE FROM Purchase WHERE purchase_id = ?`, [id], function(err){
+            const query = `BEGIN TRANSACTION;
+                                    DELETE FROM Purchase WHERE purchase_id = ${id};
+                                    
+                                    UPDATE Product SET
+                                        stock = ${stock}
+                                    WHERE 
+                                        product_id = ${product_id};
+
+                                COMMIT;
+
+            `
+            this._db.exec(query, (err) => {
                 if(err) reject(`Error in DELETE Query: ${err}`)
-                if(this.changes==0) reject(`Nonexistent Purchase`)
                 resolve(`Purchase deleted`)
             })
+        })
+    }
+
+    getPurchaseInDB(id){
+        return new Promise((resolve, reject) => {
+            this._db.get(`SELECT * FROM Purchase WHERE purchase_id = ?`, [id], (err, row) => {
+                if(err) reject(`Error in DELETE Query: ${err}`)
+                resolve(row)
+            } )
         })
     }
 }

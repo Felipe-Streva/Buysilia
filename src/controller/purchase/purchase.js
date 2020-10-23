@@ -79,8 +79,23 @@ class PurchaseController{
     }
 
     static deletePurchase(){
-        return ((req, resp) => {
-            PurchaseModels.deletePurchase(req.params.id)
+
+        return (async (req, resp) => {
+
+            const {product_id} = await PurchaseModels.getPurchase(req.params.id)
+                                    .then(row => row)
+                                    .catch(err => {
+                                        console.log(err)
+                                        resp.send({ error: err })
+                                    })
+
+            const {stock} = await ProductModels.getProduct(product_id)
+                                    .then((row) => row)
+                                    .catch((err) => resp.send(err))
+
+            
+
+            PurchaseModels.deletePurchase(req.params.id, stock, product_id)
                 .then( msg => {
                     console.log(msg)
                     resp.send({ message: msg })

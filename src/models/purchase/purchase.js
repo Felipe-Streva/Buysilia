@@ -22,8 +22,13 @@ class PurchaseModels{
         return purchaseDAO.insertPurchaseInDB(body, stock)
     }
 
-    static deletePurchase(id){
-        return purchaseDAO.deletePurchaseInDB(id)
+    static deletePurchase(id, stock, product_id){
+        stock++
+        return purchaseDAO.deletePurchaseInDB(id, stock, product_id)
+    }
+
+    static getPurchase(id){
+        return purchaseDAO.getPurchaseInDB(id)
     }
 
 }
