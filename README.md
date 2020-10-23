@@ -120,6 +120,8 @@ O retorno será um array de objetos com as informações *produto*.
 ## Deploy
 Para hospedar gratuitamente nossa aplicação, utilizamos o Heroku. A API pode ser acessada através do link: https://stark-hamlet-20271.herokuapp.com/ + rota desejada.
 
+O arquivo `Insomnia.json` é um ambiente insomnia (testador de requisições) onde possui todas as rotas com seus respectivos verbos HTTP. 
+
 
 ## Ferramentas utilizadas
 - express
