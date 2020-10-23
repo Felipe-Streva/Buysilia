@@ -51,8 +51,9 @@ class ProductDAO{
                 WHERE product_id = ?;
             `;
             const params = [body.provider_id, body.name, body.evaluation, body.description, body.price, body.stock, id]; 
-            this._db.run(UPDATE, params, (err) => {
+            this._db.run(UPDATE, params, function(err){
                 if(err) reject(`Error in UPDATE Query: ${err}`)
+                if(this.changes==0) reject(`Nonexistent Product`)
                 resolve(`Product modified`)
             })
         })
@@ -60,8 +61,9 @@ class ProductDAO{
 
     deleteProductInDB(id){
         return new Promise((resolve, reject) => {
-            this._db.run(`DELETE FROM Product WHERE product_id = ?`, [id], (err) => {
+            this._db.run(`DELETE FROM Product WHERE product_id = ?`, [id], function(err){
                 if(err) reject(`Error in DELETE Query: ${err}`)
+                if(this.changes==0) reject(`Nonexistent Product`)
                 resolve(`Product deleted`)
             })
         })

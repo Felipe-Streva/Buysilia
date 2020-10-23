@@ -45,8 +45,9 @@ class ProviderDAO{
                 WHERE provider_id = ?;
             `;
             const params = [body.name, body.phone, body.company_name, body.cnpj, body.address, id]; 
-            this._db.run(UPDATE, params, (err) => {
+            this._db.run(UPDATE, params, function(err){
                 if(err) reject(`Error in UPDATE Query: ${err}`)
+                if(this.changes==0) reject(`Nonexistent Provider`)
                 resolve(`Provider modified`)
             })
         })
@@ -54,8 +55,9 @@ class ProviderDAO{
 
     deleteProviderInDB(id){
         return new Promise((resolve, reject) => {
-            this._db.run(`DELETE FROM provider WHERE provider_id = ?`, [id], (err) => {
+            this._db.run(`DELETE FROM provider WHERE provider_id = ?`, [id], function(err){
                 if(err) reject(`Error in DELETE Query: ${err}`)
+                if(this.changes==0) reject(`Nonexistent Provider`)
                 resolve(`Provider deleted`)
             })
         })

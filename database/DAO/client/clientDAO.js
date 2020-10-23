@@ -45,8 +45,9 @@ class ClientDAO{
                 WHERE client_id = ?;
             `;
             const params = [body.first_name, body.last_name, body.email, body.password, body.cpf, body.phone, body.address, id]; 
-            this._db.run(UPDATE, params, (err) => {
+            this._db.run(UPDATE, params, function(err){
                 if(err) reject(`Error in UPDATE Query: ${err}`)
+                if(this.changes==0) reject(`Nonexistent Client`)
                 resolve(`Client modified`)
             })
         })
@@ -54,8 +55,10 @@ class ClientDAO{
 
     deleteClientInDB(id){
         return new Promise((resolve, reject) => {
-            this._db.run(`DELETE FROM client WHERE client_id = ?`, [id], (err) => {
+            this._db.run(`DELETE FROM client WHERE client_id = ?`, [id], function (err) {
+
                 if(err) reject(`Error in DELETE Query: ${err}`)
+                if(this.changes==0) reject(`Nonexistent Client`)
                 resolve(`Client deleted`)
             })
         })
