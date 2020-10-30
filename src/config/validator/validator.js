@@ -14,5 +14,7 @@ module.exports = {
     stock: body('stock').isNumeric(),
     price: body('price').isNumeric(),
     client_id: body('client_id').isNumeric(),
-    product_id: body('product_id').isNumeric()
- } 
+    product_id: body('product_id').isNumeric(),
+    url_client: body('url_client').isString().isLength({min: 10}),
+    url_product: body('url_product').isString().isLength({min: 10})
+} 

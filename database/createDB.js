@@ -15,8 +15,8 @@ db.serialize(()=>{
     db.run("CREATE TABLE if not exists `Product` (product_id integer primary key autoincrement, provider_id integer, name varchar(100), evaluation integer, description varchar(255), price decimal(11,2), stock integer)");   
     db.run("CREATE TABLE if not exists `Provider` (provider_id integer primary key autoincrement, name varchar(255), phone varchar(14), company_name varchar(255), cnpj varchar(14), address varchar(255))");
     db.run("CREATE TABLE if not exists `Purchase` (purchase_id integer primary key autoincrement, client_id integer, product_id integer, date text)");
-    db.run("CREATE TABLE if not exists `Product_photos` (id integer primary key autoincrement, product_id integer, url_product text)");
-    db.run("CREATE TABLE if not exists `Client_photos` (id integer primary key autoincrement, client_id integer, url_client text)");
+    db.run("CREATE TABLE if not exists `Product_photos` (product_photos_id integer primary key autoincrement, product_id integer, url_product text)");
+    db.run("CREATE TABLE if not exists `Client_photos` (client_photos_id integer primary key autoincrement, client_id integer, url_client text)");
 
     db.serialize(()=>{
         const statement = db.prepare("INSERT into Client (first_name, last_name, email, `password`, cpf, phone, address) Values (?, ?, ?, ?, ?, ?, ?)");

@@ -1,5 +1,5 @@
 
-const { first_name, last_name, email, password, cpf, name, company_name, cnpj, provider_id, evaluation, stock, price, client_id, product_id } = require('../config/validator/validator')
+const { first_name, last_name, email, password, cpf, name, company_name, cnpj, provider_id, evaluation, stock, price, client_id, product_id, url_client, url_product } = require('../config/validator/validator')
 
 const ClientController = require('../controller/client/client')
 
@@ -8,6 +8,10 @@ const ProviderController = require('../controller/provider/provider')
 const ProductController = require('../controller/product/product')
 
 const PurchaseController = require('../controller/purchase/purchase') ;
+
+const ClientPhotosController = require('../controller/clientPhotos/clientPhotos')
+
+const ProductPhotosController = require('../controller/productPhotos/productPhotos')
 
 
 module.exports = (app) => {
@@ -22,6 +26,14 @@ module.exports = (app) => {
     app.put(`/client/:id`, [first_name, last_name, email, password, cpf], ClientController.modifyClient())
 
     app.delete(`/client/:id`, ClientController.deleteClient())
+
+    //Client/Photos
+
+    app.get(`/client/photos/:clientId`, ClientPhotosController.getClientPhoto())
+
+    app.post(`/client/photos`,[client_id, url_client], ClientPhotosController.insertClientPhoto())
+
+    app.delete(`/client/photos/:clientId`, ClientPhotosController.deleteClientPhoto())
 
 
     //Provider
@@ -48,6 +60,15 @@ module.exports = (app) => {
     app.put(`/product/:id`, [provider_id, evaluation, stock, price, name], ProductController.modifyProduct())
 
     app.delete(`/product/:id`, ProductController.deleteProduct())
+
+    //Product/Photos
+    app.get(`/product/photos/:productId`, ProductPhotosController.getAllProductPhotos())
+
+    app.post(`/product/photos`,[product_id, url_product], ProductPhotosController.insertProductPhoto())
+
+    app.delete(`/product/photos/:productPhototId`, ProductPhotosController.deleteProductPhoto())
+
+    app.delete(`/product/photos/all/:productId`, ProductPhotosController.deleteAllProductPhoto())
 
 
     //Purchase
