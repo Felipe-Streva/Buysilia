@@ -243,6 +243,18 @@ db.serialize(()=>{
     })
 
     db.serialize(()=>{
+        const statement = db.prepare("INSERT into Product_photos (product_id, url_product) Values (?, ?)");
+        statement.run(6, 'https://images.unsplash.com/photo-1591122947157-26bad3a117d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')
+        statement.finalize()
+    })
+
+    db.serialize(()=>{
+        const statement = db.prepare("INSERT into Product_photos (product_id, url_product) Values (?, ?)");
+        statement.run(6, 'https://images.unsplash.com/photo-1529163835670-f5e2159a34a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1453&q=80')
+        statement.finalize()
+    })
+
+    db.serialize(()=>{
         const statement = db.prepare("INSERT into Purchase (client_id , product_id, date) Values (?, ?, ?)");
         statement.run(1, 1, dateSqlite);
         statement.finalize()
