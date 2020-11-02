@@ -64,6 +64,15 @@ class ClientDAO{
         })
     }
 
+    getByEmailInDB(email){
+        return new Promise ((resolve, reject) => {
+            this._db.get(`SELECT * FROM client WHERE email = ?`, [email], (err,row) =>{
+                if(err) reject(`Error in SELECT Query ${err}`)
+                resolve(row)
+            })
+        })
+    }
+
 }
 
 module.exports = ClientDAO
