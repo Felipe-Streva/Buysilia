@@ -3,6 +3,8 @@ const generateHash = require('../../config/validator/hashGenerator')
 
 const ClientModels = require('../../models/client/client')
 
+const comparePassword = require('../../config/validator/comparePassword')
+
 
 class ClientController{
 
@@ -87,6 +89,25 @@ class ClientController{
                     console.log(err)
                     resp.send({ error: err })
                 })
+        })
+    }
+
+    static checkLogin(){
+        return (async (req, resp) => {
+            const row = await ClientModels.getByEmail(req.body.email)
+                .then((row) => {
+                    return row})
+                .catch(err => {
+                    console.log(err)
+                    resp.send({ error: err })
+            })
+            console.log(row)
+            return comparePassword(req.body.password, row).then(() => {
+                resp.send(row)
+            }).catch((err) => {
+                console.log(err)
+                resp.send({client_id:0})
+            })
         })
     }
 

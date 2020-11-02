@@ -27,6 +27,10 @@ module.exports = (app) => {
 
     app.delete(`/client/:id`, ClientController.deleteClient())
 
+    // login/client
+
+    app.post(`/login/client`, ClientController.checkLogin())
+
     //Client/Photos
 
     app.get(`/client/photos/:clientId`, ClientPhotosController.getClientPhoto())

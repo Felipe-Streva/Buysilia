@@ -16,7 +16,7 @@ class ProviderController {
   static getProvider() {
     return (req, resp) => {
       ProviderModels.getProvider(req.params.id)
-        .then((rows) => resp.send(rows))
+        .then((rows) => resp.send(rows || {}))
         .catch((err) => {
           console.log(err);
           resp.send({ error: err });

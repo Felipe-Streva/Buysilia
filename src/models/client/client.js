@@ -26,6 +26,10 @@ class ClientModels{
         return clientDAO.deleteClientInDB(id)
     }
 
+    static getByEmail(email){
+        return clientDAO.getByEmailInDB(email)
+    }
+
 }
 
 module.exports = ClientModels
