@@ -75,6 +75,18 @@ class ProviderController {
         });
     };
   }
+
+  static checkLogin(){
+    return ((req, resp) => {
+      ProviderModels.getProviderByCNPJ(req.body.cnpj)
+        .then(row => resp.send(row))
+        .catch(err => {
+          console.log(err)
+          resp.send({provider_id:0})
+        })
+    })
+  }
+
 }
 
 module.exports = ProviderController;

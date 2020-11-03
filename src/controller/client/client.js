@@ -23,7 +23,7 @@ class ClientController{
     static getClient(){
         return ((req, resp) => {
             ClientModels.getClient(req.params.id)
-                .then(rows => resp.send(rows))
+                .then(row => resp.send(row))
                 .catch(err => {
                     console.log(err)
                     resp.send(err)

@@ -50,6 +50,11 @@ module.exports = (app) => {
     app.put(`/provider/:id`, [name, company_name, cnpj], ProviderController.modifyProvider())
 
     app.delete(`/provider/:id`, ProviderController.deleteProvider())
+    
+
+    //login/provider
+
+    app.post(`/login/provider`, ProviderController.checkLogin())
 
 
     //Product

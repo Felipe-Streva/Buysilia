@@ -63,6 +63,15 @@ class ProviderDAO{
         })
     }
 
+    getProviderByCNPJInDB(cnpj){
+        return new Promise ((resolve, reject) => {
+            this._db.get(`SELECT * FROM provider WHERE cnpj = ?`, [cnpj], (err,row) =>{
+                if(err) reject(`Error in SELECT Query ${err}`)
+                resolve(row)
+            })
+        })
+    }
+
 }
 
 module.exports = ProviderDAO
