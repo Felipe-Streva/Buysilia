@@ -26,6 +26,10 @@ class ProviderModels{
         return providerDAO.deleteProviderInDB(id)
     }
 
+    static getProviderByCNPJ(cnpj){
+        return providerDAO.getProviderByCNPJInDB(cnpj)
+    }
+
 }
 
 module.exports = ProviderModels
