@@ -43,9 +43,10 @@ class ClientController{
             req.body.password = await generateHash(req.body.password)
 
             return ClientModels.insertClient(req.body)
-            .then(msg  => { 
-                console.log(msg) 
-                resp.redirect('/client')
+            .then(lastID  => { 
+                console.log('Client Inserted') 
+                console.log(lastID)
+                resp.send({client_id: lastID})
             })
             .catch(err => {
                 console.log(err) 

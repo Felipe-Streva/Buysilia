@@ -30,9 +30,9 @@ class ClientDAO{
                 ) VALUES (?, ?, ?, ?, ?, ?, ?);
             `;
             const params = [body.first_name, body.last_name, body.email, body.password, body.cpf, body.phone, body.address]; 
-            this._db.run(INSERT, params, (err) => {
+            this._db.run(INSERT, params, function(err){
                 if(err) reject(`Error in INSERT Query: ${err}`)
-                resolve(`Client inserted`)
+                resolve(this.lastID)
             })
         })
     }
