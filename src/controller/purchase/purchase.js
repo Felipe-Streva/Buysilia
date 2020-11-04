@@ -63,7 +63,7 @@ class PurchaseController{
                 return PurchaseModels.insertPurchase(req.body, stock)
                         .then(msg  => { 
                             console.log(msg) 
-                            resp.redirect('/purchase')
+                            resp.send({message:msg})
                         })
                         .catch(err => {
                             console.log(err) 
