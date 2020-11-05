@@ -32,9 +32,9 @@ class ProviderController {
       }
 
       return ProviderModels.insertProvider(req.body)
-        .then((msg) => {
-          console.log(msg);
-          resp.redirect("/provider");
+        .then((lastID) => {
+          console.log('Provider inserted');
+          resp.send({provider_id: lastID});
         })
         .catch((err) => {
           console.log(err);

@@ -8,7 +8,11 @@ class ClientPhotosController{
     static getClientPhoto(){
         return ((req, resp) => {
             ClientPhotosModels.getClientPhoto(req.params.clientId)
-                .then(row => resp.send(row))
+                .then(row => {
+                    if(row) resp.send(row)
+                    resp.send({url_client:'https://www.promoview.com.br/uploads/images/unnamed%2819%29.png'})
+                    
+                })
                 .catch(err => {
                     console.log(err)
                     resp.send(err)

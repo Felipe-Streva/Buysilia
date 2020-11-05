@@ -30,9 +30,9 @@ class ProviderDAO{
                 ) VALUES (?, ?, ?, ?, ?);
             `;
             const params = [body.name, body.phone, body.company_name, body.cnpj, body.address]; 
-            this._db.run(INSERT, params, (err) => {
+            this._db.run(INSERT, params, function(err){
                 if(err) reject(`Error in INSERT Query: ${err}`)
-                resolve(`Provider inserted`)
+                resolve(this.lastID)
             })
         })
     }

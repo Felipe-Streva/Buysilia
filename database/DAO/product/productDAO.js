@@ -35,9 +35,9 @@ class ProductDAO{
         return new Promise( (resolve, reject) => {
             const INSERT = `INSERT into Product (provider_id , name , evaluation, description , price , stock ) Values (?, ?, ?, ?, ?, ?)`
             const params = [body.provider_id, body.name, body.evaluation, body.description, body.price, body.stock]; 
-            this._db.run(INSERT, params, (err) => {
+            this._db.run(INSERT, params, function(err){
                 if(err) reject(`Error in INSERT Query: ${err}`)
-                resolve(`Product inserted`)
+                resolve(this.lastID)
             })
         })
 

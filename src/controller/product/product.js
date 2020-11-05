@@ -1,5 +1,6 @@
 const ProductModels = require('../../models/product/product')
 const { validationResult } = require('express-validator')
+const { product_id } = require('../../config/validator/validator')
 
 
 class ProductController{
@@ -48,9 +49,9 @@ class ProductController{
             }
 
             return ProductModels.insertProduct(req.body)
-                        .then(msg =>{
-                            console.log(msg)
-                            resp.redirect('/product')
+                        .then(lastID =>{
+                            console.log('Product inserted')
+                            resp.send({product_id: lastID})
                         })
                         .catch(err => {
                             console.log(err)
