@@ -7,7 +7,7 @@ const port = process.env.PORT || 3333;
 routes(app)
 
 
-app.listen(port, () => console.log(`Server ON in http://localhost:${port}`))
+app.listen(port, () => console.log(`Server ON`))
 
 
 module.exports = app
